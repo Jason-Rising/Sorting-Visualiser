@@ -2,7 +2,7 @@
   "name": "algorithm-visualisations",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://Jason-Rising.github.io/Sorting-Visualiser",
+  "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
