@@ -10,10 +10,7 @@ const ANIMATION_SPEED_MS = 2;
 const PRIMARY_COLOR = '#97C54E';
 const SECONDARY_COLOR = 'white';
 
-
-// const ARRAY_SIZE = 100; 
 const MIN_VAL = 5;
-// const MAX_VAL = 730
 
 // Indicates whether an algorithm is currently being visualised
 let isRunning = false;
@@ -434,5 +431,5 @@ function random_int_from_interval(min, max){
 }
 
 window.onresize = function(){
-    console.log("called");
+    window.location.reload(false);
 }
