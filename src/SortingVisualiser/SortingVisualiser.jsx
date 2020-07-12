@@ -108,10 +108,7 @@ export default class SortingVisualiser extends React.Component{
             if (i === animations.length - 1){
                 setTimeout(() => {
                     this.toggleBtn();
-                    var a = function(){
-                        isRunning = true;
-                    }
-                    a();
+                    isRunning =  false;
                 }, i * ANIMATION_SPEED_MS);
             }
         }
@@ -163,10 +160,7 @@ export default class SortingVisualiser extends React.Component{
             if (i === animations.length - 1){
                 setTimeout(() => {
                     this.toggleBtn();                   
-                    var a = function(){
-                        isRunning = true;
-                    }
-                    a();
+                    isRunning =  false;
                 }, i * ANIMATION_SPEED_MS);
             }
 
@@ -215,10 +209,7 @@ export default class SortingVisualiser extends React.Component{
             if (i === animations.length - 1){
                 setTimeout(() => {
                     this.toggleBtn();
-                    var a = function(){
-                        isRunning = true;
-                    }
-                    a();
+                    isRunning =  false;
                 }, i * ANIMATION_SPEED_MS);
             }
         }
@@ -274,10 +265,7 @@ export default class SortingVisualiser extends React.Component{
             if (i === animations.length - 1){
                 setTimeout(() => {
                     this.toggleBtn();
-                    var a = function(){
-                        isRunning = true;
-                    }
-                    a();
+                    isRunning =  false;
                 }, i * ANIMATION_SPEED_MS);
             }
         }
