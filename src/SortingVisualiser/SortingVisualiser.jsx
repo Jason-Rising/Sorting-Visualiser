@@ -429,7 +429,3 @@ class AlgorithmInfo extends React.Component {
 function random_int_from_interval(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
-
-window.onresize = function(){
-    window.location.reload(false);
-}
