@@ -34,14 +34,14 @@ function selectionSort(array, n, animations){
             }
         }
         //Swap smallest element with end of sorted array
-        animations.push(["swap", i, minIdx, i]);
-        swap(array, minIdx, i);
+        swap(array, i, minIdx, animations);
     }
 
 }
 
 // Swap array element values
-function swap(array, i, j){
+function swap(array, i, j, animations){
+    animations.push(["swap", i, j, array[i], array[j]]);
     let tmp = array[i];
     array[i] = array[j];
     array[j] = tmp;

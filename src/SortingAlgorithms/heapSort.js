@@ -13,13 +13,6 @@ export function getHeapSortAnimations(array) {
     if (array.length <= 1) return array;
 
     heapSort(array, array.length, animations);
-
-    // Validate implemented sorting algorithm against js sort
-    const sortedArray = array.sort((a, b) => a - b);
-    if (validateArray(array, sortedArray)){
-        console.log("sorted!");
-    }else console.log("incorrectly sorted");
-
     return animations;
 }
 
@@ -62,21 +55,9 @@ function siftDown(array, parent, n, animations){
 function swap(array, i, j, animations){
     animations.push(["comparison", i, j]);
     animations.push(["comparison", i, j]);
-    animations.push(["swap", i, j]);
+    animations.push(["swap", i, j, array[i], array[j]]);
     let tmp = array[i];
     array[i] = array[j];
     array[j] = tmp;
-}
-
-function validateArray(array1, array2) {
-    if (array1.length !== array2.length) {
-        return false;
-    }
-    for (let i = 0; i < array1.length; i++) {
-      if (array1[i] !== array2[i]) {
-        return false;
-      }
-    }
-    return true;
 }
 

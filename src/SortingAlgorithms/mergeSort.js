@@ -1,3 +1,13 @@
+/**
+ * 
+ * Merge Sort Information
+ * Time Complexiy: Θ(nlogn)
+ * 
+ * Space Complexity: O(n)
+ * In-place: No, requires O(n) auxiliary array + O(logn) stack space if using recursion
+ * Stable: Yes, merge keeps relative order with additional book keeping, i.e. left side goes first
+ */
+
 export function getMergeSortAnimations(array) {
     const animations = [];
     if (array.length <= 1) return array;

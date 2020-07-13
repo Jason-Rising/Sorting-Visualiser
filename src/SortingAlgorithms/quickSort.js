@@ -63,7 +63,7 @@ function hoarePartition(A, fe, fg, animations){
 function swap(array, i, j, animations){
     animations.push(["comparison3", i, j]);
     animations.push(["comparison4", i, j]);
-    animations.push(["swap", i, j]);
+    animations.push(["swap", i, j, array[i], array[j]]);
 
     let tmp = array[i];
     array[i] = array[j];

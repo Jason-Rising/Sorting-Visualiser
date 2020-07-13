@@ -66,12 +66,13 @@ export default class SortingVisualiser extends React.Component{
         const animations = getSelectionSortAnimations(this.state.array);
         const arrayBars = document.getElementsByClassName('array-bar');
 
+        // Loop through animations
         for (let i = 0; i < animations.length; i++){
             const barOneIdxStyle = arrayBars[animations[i][1]].style;
-            const barTwoIdxStyle = arrayBars[animations[i][3]].style;
             if (animations[i][0] === "comparison1"){
                 // Visualise comparison
                 setTimeout(() => {
+                    const barTwoIdxStyle = arrayBars[animations[i][3]].style;
                     barOneIdxStyle.backgroundColor = SECONDARY_COLOR;
                     barTwoIdxStyle.backgroundColor = SECONDARY_COLOR;
                 }, i * ANIMATION_SPEED_MS);
@@ -81,6 +82,7 @@ export default class SortingVisualiser extends React.Component{
                     // Don't revert back end or sorted array if it will not be changed in the next iteration
                     if (i < animations.length){
                         if (animations[i + 1][2] !== animations[i][2]){
+                            const barTwoIdxStyle = arrayBars[animations[i][3]].style;
                             barTwoIdxStyle.backgroundColor = PRIMARY_COLOR;
                         }
                     }
@@ -92,9 +94,8 @@ export default class SortingVisualiser extends React.Component{
                     const barOneStyle = arrayBars[animations[i][1]].style;
                     const barTwoStyle = arrayBars[animations[i][2]].style;
                     //Swap heights
-                    const barOneHeight = parseInt(barOneStyle.height);
-                    barOneStyle.height = `${parseInt(barTwoStyle.height)}px`;
-                    barTwoStyle.height = `${barOneHeight}px`;
+                    barOneStyle.height = `${animations[i][4]}px`;
+                    barTwoStyle.height = `${animations[i][3]}px`;
 
                     barOneStyle.backgroundColor = PRIMARY_COLOR;
                     barTwoStyle.backgroundColor = PRIMARY_COLOR;
@@ -182,9 +183,13 @@ export default class SortingVisualiser extends React.Component{
         );
 
         const animations = getMergeSortAnimations(this.state.array);
+        
+        // Process array of animations
         for (let i = 0; i < animations.length; i++) {
           const arrayBars = document.getElementsByClassName('array-bar');
           const isColorChange = i % 3 !== 2;
+
+          // Change div color depending on position in triplet, we know we have a colour change for the first two animations in a triplet
           if (isColorChange) {
             const [barOneIdx, barTwoIdx] = animations[i];
             const barOneStyle = arrayBars[barOneIdx].style;
@@ -195,6 +200,7 @@ export default class SortingVisualiser extends React.Component{
               barTwoStyle.backgroundColor = color;
             }, i * ANIMATION_SPEED_MS);
           } else {
+            // Swap bar heights  
             setTimeout(() => {
               const [barOneIdx, newHeight] = animations[i];
               const barOneStyle = arrayBars[barOneIdx].style;
@@ -229,12 +235,13 @@ export default class SortingVisualiser extends React.Component{
             "Best choice when low memory footprint is required and guaranteed Θ(nlogn) performance is needed, i.e security reasons"
         );
         
-        console.log(this.state.state);
         const animations = getHeapSortAnimations(this.state.array);
         const arrayBars = document.getElementsByClassName('array-bar');
 
+        // Process array of animations
         console.log(animations.length);
         for(let i = 0; i < animations.length; i++){
+            // Toggle between div colour depending on current background colour 
             if (animations[i][0] === "comparison"){
                 setTimeout(() => {
                     const barOneStyle = arrayBars[animations[i][1]].style;
@@ -248,13 +255,13 @@ export default class SortingVisualiser extends React.Component{
 
                   }, i * ANIMATION_SPEED_MS);
             }else{
+                // Swaps heights of two bars
                 setTimeout(() => {
                     const barOneStyle = arrayBars[animations[i][1]].style;
                     const barTwoStyle = arrayBars[animations[i][2]].style;
     
-                    const tempHeight = parseInt(barOneStyle.height);
-                    barOneStyle.height = `${parseInt(barTwoStyle.height)}px`;
-                    barTwoStyle.height = `${tempHeight}px`;
+                    barOneStyle.height = `${animations[i][4]}px`;
+                    barTwoStyle.height = `${animations[i][3]}px`;
                 }, i * ANIMATION_SPEED_MS);
             }
 
@@ -285,39 +292,41 @@ export default class SortingVisualiser extends React.Component{
         "Fastest sorting algorithm in most cases. Is the algorithm of choice when speed matters and stability is not required. In practice it is best to choose the pivot at random to avoid worst case and potential attacks"
         );
 
+        // Process array of animations
         const animations = getQuickSortAnimations(this.state.array);
         const arrayBars = document.getElementsByClassName('array-bar');
         for(let i = 0; i < animations.length; i++){
             const barStyle = arrayBars[animations[i][1]].style;
             if (animations[i][0] === "comparison1"){
+                // Highlight selected div
                 setTimeout(() => {
                     barStyle.backgroundColor = SECONDARY_COLOR;
                   }, i * ANIMATION_SPEED_MS);
             }else if (animations[i][0] === "comparison2"){
+                // Revert div back to defualt colour
                 setTimeout(() => {
                     barStyle.backgroundColor = PRIMARY_COLOR;
                 }, i * ANIMATION_SPEED_MS);
             }else if (animations[i][0] === "comparison3"){
+                // Highlight two divs at the same time
                 setTimeout(() => {
                     const barTwoStyle = arrayBars[animations[i][2]].style;
                     barStyle.backgroundColor = SECONDARY_COLOR;
                     barTwoStyle.backgroundColor = SECONDARY_COLOR;                
                 }, i * ANIMATION_SPEED_MS);
             }else if (animations[i][0] === "comparison4"){
+                // Revert two divs to defualt colour at the same time
                 setTimeout(() => {
                     const barTwoStyle = arrayBars[animations[i][2]].style;
                     barStyle.backgroundColor = PRIMARY_COLOR;
                     barTwoStyle.backgroundColor = PRIMARY_COLOR;             
                 }, i * ANIMATION_SPEED_MS);
             }else{
+                // Swaps heights of two bars
                 setTimeout(() => {
-                    const barHeight = parseInt(barStyle.height);
-    
+                    barStyle.height = `${animations[i][4]}px`;
                     const barTwoStyle = arrayBars[animations[i][2]].style;
-                    const barTwoHeight = parseInt(barTwoStyle.height);
-    
-                    barStyle.height = `${barTwoHeight}px`;
-                    barTwoStyle.height = `${barHeight}px`;                
+                    barTwoStyle.height = `${animations[i][3]}px`;                              
                 }, i * ANIMATION_SPEED_MS);
             }
             
@@ -370,6 +379,7 @@ export default class SortingVisualiser extends React.Component{
     }
 }
 
+// Component handles displaying of different algorithm infomation
 class AlgorithmInfo extends React.Component {
     state = {
         name: "No Algorithm Selected",
@@ -384,7 +394,7 @@ class AlgorithmInfo extends React.Component {
         misc: "",
     };
 
-
+    // Updates various information based on passed information
     updateInfo(Newname, NewBest, NewAvg, NewWorst, NewSpace, NewInPlace, NewStable, NewMisc){
         this.setState({
             name: Newname,
@@ -426,6 +436,7 @@ class AlgorithmInfo extends React.Component {
     }
 }
 
+// Returns an int between a set min and max interval
 function random_int_from_interval(min, max){
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
