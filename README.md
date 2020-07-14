@@ -1,4 +1,4 @@
-![alt text](https://github.com/Jason-Rising/Sorting-Visualiser/Showcase Video.gif?raw=true)
+![alt text](https://github.com/Jason-Rising/Sorting-Visualiser/Showcase-Video.gif?raw=true)
 
 
 https://jason-rising.github.io/Sorting-Visualiser/
