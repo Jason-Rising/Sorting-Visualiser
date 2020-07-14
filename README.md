@@ -1,7 +1,11 @@
+# Sorting Visualiser 
+Simple visualiser for various common sorting algorithms. Additional algorithm infomation regarding time and space complexity also available.
+Click the following link to view the application:
+https://jason-rising.github.io/Sorting-Visualiser/
+
 ![](Showcase-Video.gif)
 
-
-https://jason-rising.github.io/Sorting-Visualiser/
+# 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
